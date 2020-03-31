@@ -19,7 +19,7 @@ namespace jt2.debug_helper_extensions
             }
         }
 
-        public static void dumpString(this string xString, string? prepend = null, string? postscript = null) {
+        public static void DumpString(this string xString, string? prepend = null, string? postscript = null) {
             var outputString = (prepend ?? "") + xString;
             using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.txt"),true))
             {

@@ -10,11 +10,10 @@ namespace jt2.debug_helper_extensions
         static string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         public static void DumpObject(this object x, string? prepend = null, string? postscript = null) {
-            var jsonString = prepend + Newtonsoft.Json.JsonConvert.SerializeObject(x);
-            var outputString = (prepend ?? "") + jsonString;
+            var jsonString = (prepend ?? "") + Newtonsoft.Json.JsonConvert.SerializeObject(x);
             using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.txt"),true))
             {
-                outputFile.WriteLine(outputString);
+                outputFile.WriteLine(jsonString);
                 if (postscript is object) outputFile.WriteLine(postscript);
             }
         }

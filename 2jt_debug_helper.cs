@@ -5,7 +5,18 @@ using System.IO;
 
 namespace jt2.debug_helper_extensions
 {
-    static class Object_extensions
+    static class To_json_extensions
+    {
+        static string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+        public static string ObjectToJson(this object x, string? prepend = null, string? postscript = null) {
+            string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(x);
+            string returnString = $"{prepend ?? ""}{jsonString}\n{postscript}";
+            return jsonString;
+        }
+    }
+
+    static class Dump_to_textFile_extensions
     {
         static string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
